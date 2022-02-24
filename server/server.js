@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const User = require("./models/user");
+
 require("dotenv").config({ path: "./config.env" });
 
 const port = process.env.PORT || 5000;

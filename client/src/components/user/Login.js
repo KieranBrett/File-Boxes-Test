@@ -25,9 +25,17 @@ export default function Login() {
         setOpen(false);
     };
 
-    const handleSubmit = () => {
-        console.log(`username: ${username}`);
-        console.log(`password: ${pass}`);
+    async function onSubmit(e) {
+        await fetch("http://localhost:5000/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: username, password: pass }),
+        }).catch(error => {
+            window.alert(error);
+            return;
+        });
     }
 
     return (
@@ -52,7 +60,7 @@ export default function Login() {
                         Enter your username and password to log in.
 
                         <Link to="/register">Register here</Link> if you dont have an Account.
-                        
+
                     </DialogContentText>
 
                     <TextField
@@ -84,7 +92,7 @@ export default function Login() {
 
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleSubmit} autoFocus>
+                    <Button onClick={onSubmit} autoFocus>
                         Sign In
                     </Button>
                 </DialogActions>

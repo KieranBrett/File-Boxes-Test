@@ -32,7 +32,7 @@ function Home() {
   return <Button onClick={onSubmit}>Click Me</Button>
 
   async function onSubmit(e) {
-    await fetch("http://localhost:5000/record/addRandom", {
+    await fetch("http://localhost:5000/addRandom", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
