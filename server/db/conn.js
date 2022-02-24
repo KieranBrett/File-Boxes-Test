@@ -1,7 +1,5 @@
 const { MongoClient } = require("mongodb");
-// Ideally this file would be in a separate folder, but for the sake of simplicity, we'll keep it here.
-// In a real world situation we would also ignore the file so the database credentials arent made public
-const Db = "mongodb+srv://dbAdmin:GNzEXqIC1fnQxgse@csvmanager.2ckt8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const Db = process.env.ATLAS_URI;
 
 const client = new MongoClient(Db, {
   useNewUrlParser: true,
